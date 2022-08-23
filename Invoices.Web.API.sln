@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invoices.Web.API", "Invoices.Web.API\Invoices.Web.API.csproj", "{60A16E80-B7D8-4032-ABCA-745324AE171B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invoices.Console.Client", "Invoices.Console.Client\Invoices.Console.Client.csproj", "{7E489265-F268-44C5-9E72-23DEB1341740}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60A16E80-B7D8-4032-ABCA-745324AE171B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60A16E80-B7D8-4032-ABCA-745324AE171B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60A16E80-B7D8-4032-ABCA-745324AE171B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60A16E80-B7D8-4032-ABCA-745324AE171B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E489265-F268-44C5-9E72-23DEB1341740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E489265-F268-44C5-9E72-23DEB1341740}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E489265-F268-44C5-9E72-23DEB1341740}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E489265-F268-44C5-9E72-23DEB1341740}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {719775F2-9E3F-4B6F-9D6A-E0232B85935A}
+	EndGlobalSection
+EndGlobal
