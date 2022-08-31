@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Invoices.Web.API.Models;
+﻿using Invoices.Web.API.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Invoices.Web.API
@@ -15,6 +10,14 @@ namespace Invoices.Web.API
 
         }
 
-        public DbSet<Invoice>? Invoices { get; set; } = null;
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<Invoice>()
+            //    .HasMany(items => items.InvoiceItems);
+        }
+
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<InvoiceItem> InvoiceItems { get; set; }
     }
 }

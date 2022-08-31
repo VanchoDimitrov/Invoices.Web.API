@@ -1,33 +1,38 @@
 using Invoices.Web.API;
-using Invoices.Web.API.Models;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//builder.Services.AddControllers();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options =>
+        options.SerializerSettings.ContractResolver =
+            new CamelCasePropertyNamesContractResolver());
 
-// Add this to register the invoice Context.
-builder.Services.AddDbContext<InvoicesContext>(opt => opt.UseInMemoryDatabase(nameof(Invoice)));
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-// Add Swager and version of the API
+
+builder.Services.AddDbContext<InvoicesContext>
+    (opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new() { Title = "Invoices API", Version = "v1" });
+    c.SwaggerDoc("v1", new() { Title = "Invoices", Version = "v1" });
 });
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (builder.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Invoices v1"));
 }
 
 app.UseHttpsRedirection();
